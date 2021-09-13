@@ -13,7 +13,7 @@ def _3_letter_check_mixed():
 def _3_letter_check_num_only():
     print('starting 3 letter check')
     while True:
-        user = str(random.randrange(10) + random.randrange(10) + random.randrange(10))
+        user = str(random.randrange(10)) + str(random.randrange(10)) + str(random.randrange(10))
         print(user)
         r = requests.get(f'https://github.com/{user}')
         if r.status_code == 404:
@@ -22,7 +22,7 @@ def _3_letter_check_num_only():
 def _3_letter_check_letter_only():
     print('starting 3 letter check')
     while True:
-        user = str(random.choice(string.ascii_letters)) + str(random.choice(string.ascii_letters)) + str(random.choice(string.ascii_letters))
+        user = random.choice(string.ascii_letters) + random.choice(string.ascii_letters) + random.choice(string.ascii_letters)
         print(user)
         r = requests.get(f'https://github.com/{user}')
         if r.status_code == 404:
