@@ -22,7 +22,7 @@ def _3_letter_check_num_only():
 def _3_letter_check_letter_only():
     print('starting 3 letter check')
     while True:
-        user = random.choice(string.ascii_letters) + random.choice(string.ascii_letters) + random.choice(string.ascii_letters)
+        user = str(random.choice(string.ascii_letters)) + str(random.choice(string.ascii_letters)) + str(random.choice(string.ascii_letters))
         print(user)
         r = requests.get(f'https://github.com/{user}')
         if r.status_code == 404:
