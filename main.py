@@ -5,8 +5,17 @@ def _3_letter_check_mixed():
     print('starting 3 letter check (mixed)')
     while True:
         user = str(shtuf[random.randrange(35)]) + str(shtuf[random.randrange(35)]) + str(shtuf[random.randrange(35)])
+        proxie_list = []
+
+
+        with open("https.txt", "r") as f:                   #USE HTTPS PROXIES ONLY
+            for proxy in f.readlines():
+                proxie_list.append(proxy.replace("\n", ""))
+        proxies = {
+           'https': random.choice(proxie_list)
+        }
         print(user)
-        r = requests.get(f'https://github.com/{user}')
+        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
         if r.status_code == 404:
             with open('3lmixed.txt', 'w') as t:
                 t.write(user)
