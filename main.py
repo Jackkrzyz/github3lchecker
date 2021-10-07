@@ -1,6 +1,9 @@
 import requests, random, string, multiprocessing
 user = ""
 shtuf = 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+mixedChecked = []
+numChecked = []
+alphaChecked = []
 def _3_letter_check_mixed():
     print('starting 3 letter check (mixed)')
     while True:
@@ -12,11 +15,15 @@ def _3_letter_check_mixed():
         proxies = {
            'https://': random.choice(proxie_list)
         }
-        print(user)
-        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
-        if r.status_code == 404:
-            with open('3lmixed.txt', 'a') as t:
-                t.write(user + '\n')
+        if user not in mixedChecked:
+            mixedChecked.append(user)
+            r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
+            if r.status_code == 404:
+                with open('3lmixed.txt', 'a') as t:
+                    print(f'{user} : AVAILABLE')
+                    t.write(user + '\n')
+            else:
+                print(f'{user} : taken')
 def _3_letter_check_num_only():
     print('starting 3 letter check')
     while True:
@@ -28,11 +35,15 @@ def _3_letter_check_num_only():
         proxies = {
            'https://': random.choice(proxie_list)
         }
-        print(user)
-        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
-        if r.status_code == 404:
-            with open('3lnumonly.txt', 'a') as t:
-                t.write(user + '\n')
+        if user not in numChecked:
+            numChecked.append(user)
+            r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
+            if r.status_code == 404:
+                with open('3lnumonly.txt', 'a') as t:
+                    print(f'{user} : AVAILABLE')
+                    t.write(user + '\n')
+            else:
+                print(f'{user} : taken')
 def _3_letter_check_letter_only():
     print('starting 3 letter check')
     while True:
@@ -44,11 +55,15 @@ def _3_letter_check_letter_only():
         proxies = {
            'https://': random.choice(proxie_list)
         }
-        print(user)
-        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
-        if r.status_code == 404:
-            with open('3llettersonly.txt', 'a') as t:
-                t.write(user + '\n')
+        if user not in alphaChecked:
+            alphaChecked.append(user)
+            r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
+            if r.status_code == 404:
+                with open('3llettersonly.txt', 'a') as t:
+                    print(f'{user} : AVAILABLE')
+                    t.write(user + '\n')
+            else:
+                print(f'{user} : taken')
 processes = []
 
 p = multiprocessing.Process(target=_3_letter_check_mixed)

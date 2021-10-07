@@ -1,1 +1,9 @@
-# dont use this shit until i add proxy support ur hunned percent gonna get rate limited
+# GITHUB 3L USERNAME CHECKER
+
+## HOW TO USE
+ 1. Copy your **HTTPS** proxies into `https.txt`
+ 2. Run the `main.py` file
+ 3. Available usernames will be loaded onto multiple `.txt` files
+
+### Features
+ 1. uh it works well i dunno
