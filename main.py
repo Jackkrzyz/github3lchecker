@@ -5,45 +5,65 @@ def _3_letter_check_mixed():
     print('starting 3 letter check (mixed)')
     while True:
         user = str(shtuf[random.randrange(35)]) + str(shtuf[random.randrange(35)]) + str(shtuf[random.randrange(35)])
+        proxie_list = []
+        with open("https.txt", "r") as f:                   
+            for proxy in f.readlines():
+                proxie_list.append(proxy.replace("\n", ""))
+        proxies = {
+           'https://': random.choice(proxie_list)
+        }
         print(user)
-        r = requests.get(f'https://github.com/{user}')
+        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
         if r.status_code == 404:
-            with open('3lmixed.txt', 'w') as t:
-                t.write(user)
+            with open('3lmixed.txt', 'a') as t:
+                t.write(user + '\n')
 def _3_letter_check_num_only():
     print('starting 3 letter check')
     while True:
         user = str(random.randrange(10)) + str(random.randrange(10)) + str(random.randrange(10))
+        proxie_list = []
+        with open("https.txt", "r") as f:                   
+            for proxy in f.readlines():
+                proxie_list.append(proxy.replace("\n", ""))
+        proxies = {
+           'https://': random.choice(proxie_list)
+        }
         print(user)
-        r = requests.get(f'https://github.com/{user}')
+        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
         if r.status_code == 404:
-            with open('3lnumonly.txt', 'w') as t:
-                t.write(user)
+            with open('3lnumonly.txt', 'a') as t:
+                t.write(user + '\n')
 def _3_letter_check_letter_only():
     print('starting 3 letter check')
     while True:
         user = random.choice(string.ascii_letters) + random.choice(string.ascii_letters) + random.choice(string.ascii_letters)
+        proxie_list = []
+        with open("https.txt", "r") as f:                   
+            for proxy in f.readlines():
+                proxie_list.append(proxy.replace("\n", ""))
+        proxies = {
+           'https://': random.choice(proxie_list)
+        }
         print(user)
-        r = requests.get(f'https://github.com/{user}')
+        r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
         if r.status_code == 404:
-            with open('3llettersonly.txt', 'w') as t:
-                t.write(user)
+            with open('3llettersonly.txt', 'a') as t:
+                t.write(user + '\n')
 processes = []
-for x in range(20):
-    p = multiprocessing.Process(target=_3_letter_check_mixed)
-    if __name__ == "__main__":
-        p.start()
-        processes.append(p)
-for x in range(20):
-    p = multiprocessing.Process(target=_3_letter_check_num_only)
-    if __name__ == "__main__":
-        p.start()
-        processes.append(p)
-for x in range(20):
-    p = multiprocessing.Process(target=_3_letter_check_letter_only)
-    if __name__ == "__main__":
-        p.start()
-        processes.append(p)
+
+p = multiprocessing.Process(target=_3_letter_check_mixed)
+if __name__ == "__main__":
+    p.start()
+    processes.append(p)
+p = multiprocessing.Process(target=_3_letter_check_num_only)
+if __name__ == "__main__":
+    p.start()
+    processes.append(p)
+
+p = multiprocessing.Process(target=_3_letter_check_letter_only)
+if __name__ == "__main__":
+    p.start()
+    processes.append(p)
 for p in processes:
     p.join()
     
