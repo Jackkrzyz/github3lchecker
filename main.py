@@ -7,7 +7,7 @@ alphaChecked = []
 def _3_letter_check_mixed():
     print('starting 3 letter check (mixed)')
     while True:
-        user = str(shtuf[random.randrange(35)]) + str(shtuf[random.randrange(35)]) + str(shtuf[random.randrange(35)])
+        user = str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower()
         proxie_list = []
         with open("https.txt", "r") as f:                   
             for proxy in f.readlines():
@@ -27,7 +27,7 @@ def _3_letter_check_mixed():
 def _3_letter_check_num_only():
     print('starting 3 letter check')
     while True:
-        user = str(random.randrange(10)) + str(random.randrange(10)) + str(random.randrange(10))
+        user = str(random.randrange(10)).lower() + str(random.randrange(10)).lower() + str(random.randrange(10)).lower()
         proxie_list = []
         with open("https.txt", "r") as f:                   
             for proxy in f.readlines():
