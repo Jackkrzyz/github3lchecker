@@ -7,9 +7,8 @@ def _3_letter_check_mixed():
         user = str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower()
         
         with open('checked.txt', 'a+') as c:
-            for line in c:
-                if line == user:
-                    break
+            if user not in c.read():
+        
                 proxie_list = []
                 with open("https.txt", "r") as f:                   
                     for proxy in f.readlines():
@@ -32,9 +31,8 @@ def _3_letter_check_num_only():
     while True:
         user = str(random.randrange(10)) + str(random.randrange(10)) + str(random.randrange(10))
         with open('checked.txt', 'a+') as c:
-            for line in c:
-                if line == user:
-                    break
+            if user not in c.read():
+        
                 proxie_list = []
                 with open("https.txt", "r") as f:                   
                     for proxy in f.readlines():
@@ -58,9 +56,8 @@ def _3_letter_check_letter_only():
         user = random.choice(string.ascii_letters).lower() + random.choice(string.ascii_letters).lower() + random.choice(string.ascii_letters).lower()
     
         with open('checked.txt', 'a+') as c:
-            for line in c:
-                if line == user:
-                    break
+            if user not in c.read():
+        
                 proxie_list = []
                 with open("https.txt", "r") as f:                   
                     for proxy in f.readlines():
