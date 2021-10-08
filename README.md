@@ -8,6 +8,6 @@
 ### Features
  1. uh it works well i dunno
 
-
+thanks kxrn for the rotating proxy code! 
 
 ![a](https://cdn-icons-png.flaticon.com/512/25/25231.png)
