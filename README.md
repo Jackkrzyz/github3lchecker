@@ -7,6 +7,7 @@
 
 ### Features
  1. uh it works well i dunno
+ 2. `checked.txt` stores previously checked taked usernames to maximize efficiency
 
 thanks [kxrn](https://github.com/kxrn) for the rotating proxy code! 
 
