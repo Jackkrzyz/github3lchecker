@@ -5,15 +5,16 @@ def _3_letter_check_mixed():
     print('starting 3 letter check (mixed)')
     while True:
         user = str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower()
-        proxie_list = []
-        with open("https.txt", "r") as f:                   
-            for proxy in f.readlines():
-                proxie_list.append(proxy.replace("\n", ""))
-        proxies = {
-           'https://': random.choice(proxie_list)
-        }
+        
         if user not in Checked:
             Checked.append(user)
+            proxie_list = []
+            with open("https.txt", "r") as f:                   
+                for proxy in f.readlines():
+                    proxie_list.append(proxy.replace("\n", ""))
+            proxies = {
+           'https://': random.choice(proxie_list)
+            }
             try:
                 r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
             except:
@@ -28,15 +29,16 @@ def _3_letter_check_num_only():
     print('starting 3 letter check')
     while True:
         user = str(random.randrange(10)) + str(random.randrange(10)) + str(random.randrange(10))
-        proxie_list = []
-        with open("https.txt", "r") as f:                   
-            for proxy in f.readlines():
-                proxie_list.append(proxy.replace("\n", ""))
-        proxies = {
-           'https://': random.choice(proxie_list)
-        }
+        
         if user not in Checked:
             Checked.append(user)
+            proxie_list = []
+            with open("https.txt", "r") as f:                   
+                for proxy in f.readlines():
+                    proxie_list.append(proxy.replace("\n", ""))
+            proxies = {
+           'https://': random.choice(proxie_list)
+            }
             try:
                 r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
             except:
@@ -51,15 +53,16 @@ def _3_letter_check_letter_only():
     print('starting 3 letter check')
     while True:
         user = random.choice(string.ascii_letters).lower() + random.choice(string.ascii_letters).lower() + random.choice(string.ascii_letters).lower()
-        proxie_list = []
-        with open("https.txt", "r") as f:                   
-            for proxy in f.readlines():
-                proxie_list.append(proxy.replace("\n", ""))
-        proxies = {
-           'https://': random.choice(proxie_list)
-        }
+    
         if user not in Checked:
             Checked.append(user)
+            proxie_list = []
+            with open("https.txt", "r") as f:                   
+                for proxy in f.readlines():
+                    proxie_list.append(proxy.replace("\n", ""))
+            proxies = {
+           'https://': random.choice(proxie_list)
+            }
             try:
                 r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
             except:
