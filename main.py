@@ -1,13 +1,13 @@
 import requests, random, string, multiprocessing
 shtuf = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-Checked = []
+
 def _3_letter_check_mixed():
     print('starting 3 letter check (mixed)')
     while True:
         user = str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower() + str(shtuf[random.randrange(35)]).lower()
         
         with open('checked.txt', 'a+') as c:
-            if user not in c.read():
+            if user not in c.readlines():
         
                 proxie_list = []
                 with open("https.txt", "r") as f:                   
@@ -19,7 +19,7 @@ def _3_letter_check_mixed():
                 try:
                     r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
                 except:
-                    print('REQUEST FAILED')
+                    print(f'REQUEST FAILED {user}')
                 if r.status_code == 404:
                     with open('usernames.txt', 'a') as t:
                         print(f'{user} : AVAILABLE')
@@ -31,7 +31,7 @@ def _3_letter_check_num_only():
     while True:
         user = str(random.randrange(10)) + str(random.randrange(10)) + str(random.randrange(10))
         with open('checked.txt', 'a+') as c:
-            if user not in c.read():
+            if user not in c.readlines():
         
                 proxie_list = []
                 with open("https.txt", "r") as f:                   
@@ -43,7 +43,7 @@ def _3_letter_check_num_only():
                 try:
                     r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
                 except:
-                    print('REQUEST FAILED')
+                    print(f'REQUEST FAILED {user}')
                 if r.status_code == 404:
                     with open('usernames.txt', 'a') as t:
                         print(f'{user} : AVAILABLE')
@@ -56,7 +56,7 @@ def _3_letter_check_letter_only():
         user = random.choice(string.ascii_letters).lower() + random.choice(string.ascii_letters).lower() + random.choice(string.ascii_letters).lower()
     
         with open('checked.txt', 'a+') as c:
-            if user not in c.read():
+            if user not in c.readlines():
         
                 proxie_list = []
                 with open("https.txt", "r") as f:                   
@@ -68,7 +68,7 @@ def _3_letter_check_letter_only():
                 try:
                     r = requests.get(f'https://github.com/{user}', proxies=proxies, timeout=5)
                 except:
-                    print('REQUEST FAILED')
+                    print(f'REQUEST FAILED {user}')
                 if r.status_code == 404:
                     with open('usernames.txt', 'a') as t:
                         print(f'{user} : AVAILABLE')
